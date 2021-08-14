@@ -108,6 +108,9 @@ Meterpreter
        upload
        download
        
+       sysinfo
+       getuid
+       
        Windows specific
               getsystem
               hashdump
