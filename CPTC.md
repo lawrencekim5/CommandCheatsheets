@@ -184,4 +184,5 @@ Networking
        
        
                   
-                  
+Upgrading a dumb shell with python                  
+python -c 'import pty;pty.spawn("/bin/bash")'
